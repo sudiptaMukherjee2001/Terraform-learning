@@ -1,9 +1,6 @@
-output "instance_name" {
-     value = aws_instance.example.tags.Name  
+output "Name_of_the_instance" {
+     value = module.ec2_creation.instance_name
 }
-output "instance_type" {
-     value = aws_instance.example.instance_type  
-}
-output "public-ip-address" {
-     value = aws_instance.example.public_ip
+output "bucket_name" {
+     value = module.s3_creation.s3Bucketname
 }
