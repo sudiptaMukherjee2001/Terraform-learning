@@ -52,7 +52,7 @@ resource "aws_subnet" "terraform_created_vpc_subnet" {
 
 resource "aws_instance" "terraform_created_instance" {
   ami           = "ami-03ea746da1a2e36e7"
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
 
   subnet_id = aws_subnet.terraform_created_vpc_subnet.id
 
