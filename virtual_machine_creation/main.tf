@@ -23,6 +23,7 @@ provider "aws" {
 
 resource "aws_s3_bucket" "terraform_state_bucket" {
   bucket = "terraform-state-bucket-2026-6102001"
+  force_destroy = true
 
   tags = {
     Name = "state_file_store_bucket"
