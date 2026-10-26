@@ -70,13 +70,6 @@ variable "inbound_cidr_block" {
   }
 }
 
-variable "Ec2_environment" {
-  description = "The environment for the ec2 instance"
-  type        = string
-  default     = "dev"
-}
-
-
 # creating map type variable for instance type
 variable "instance_type" {
   description = "The instance type for the EC2 instance"
@@ -87,3 +80,11 @@ variable "instance_type" {
     prod = "t3.medium"  
   }
 }
+
+variable "Ec2_environment" {
+  description = "The environment for the ec2 instance"
+  type        = string
+  default     = "dev"
+}
+
+
