@@ -11,5 +11,6 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = "us-east-1"
+  region = "us-east-2"
+  profile = "terraform-user-personal" # using Iam user we use terraform to create resources in AWS account as iam user
 }

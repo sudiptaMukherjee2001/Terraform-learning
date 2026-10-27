@@ -28,7 +28,7 @@ variable "subnet_cidr" {
 variable "instance_tags"{
     description = "Tags for the EC2 instance"
     type = list(string)
-    default = ["terraform-revision-ec2","preprod-EC2-environment"]
+    default = ["terraform-revision-ec2-iam-user","preprod-EC2-environment"]
 }
 
 
