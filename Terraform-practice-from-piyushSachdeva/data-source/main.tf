@@ -37,48 +37,48 @@ resource "aws_vpc" "data_source_vpc_internal_name" {
 
 
 
-data "aws_vpc" "selected_vpc" {
-  filter {
-    name   = "tag:Name"
-    values = ["data-source-vpc"]
-  }
-}
+# data "aws_vpc" "selected_vpc" {
+#   filter {
+#     name   = "tag:Name"
+#     values = ["data-source-vpc"]
+#   }
+# }
 
 resource "aws_subnet" "data_source_subnet_internal_name" {
-  vpc_id     = data.aws_vpc.selected_vpc.id
+  vpc_id     = aws_vpc.data_source_vpc_internal_name.id
   cidr_block = "10.0.1.0/24"
 
   tags = {
     Name = "data-source-subnet"
   }
-  depends_on = [data.aws_vpc.selected_vpc]
+  depends_on = [aws_vpc.data_source_vpc_internal_name]
 }
 
 
-data "aws_subnet" "selected_subnet" {
-  filter {
-    name   = "tag:Name"
-    values = ["data-source-subnet"]
-  }
-}
+# data "aws_subnet" "selected_subnet" {
+#   filter {
+#     name   = "tag:Name"
+#     values = ["data-source-subnet"]
+#   }
+# }
 
 
 
 
-resource "aws_instance" "example" {
-  ami           = "ami-0567589d25e06853e"
-  instance_type = "t3.micro"
-  subnet_id     = data.aws_subnet.selected_subnet.id # this will get the subnet id from data source and will use it to create ec2 instance
+# resource "aws_instance" "example" {
+#   ami           = "ami-0567589d25e06853e"
+#   instance_type = "t3.micro"
+#   subnet_id     = data.aws_subnet.selected_subnet.id # this will get the subnet id from data source and will use it to create ec2 instance
   
-  tags = {
-    Name = "data-source-ec2"
-  }
-}
+#   tags = {
+#     Name = "data-source-ec2"
+#   }
+# }
 
 output "vpc_id" {
-  value = data.aws_vpc.selected_vpc.id
+  value = aws_vpc.data_source_vpc_internal_name.id
 }
 output "subnet_id" {
-  value = data.aws_subnet.selected_subnet.id
+  value = aws_subnet.data_source_subnet_internal_name.id
 }
 
