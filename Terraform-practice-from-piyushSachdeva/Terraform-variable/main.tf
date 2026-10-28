@@ -38,7 +38,7 @@ resource "aws_subnet" "example" {
 
 #creating ec2 instance
 resource "aws_instance" "example" {
-  ami = "ami-0567589d25e06853e"
+  ami = "ami-052b3645c2c811821"
 
   // if default is terraform plan -var="env=prod"var.Ec2_environment == "dev"  then  insrance_type = "t3.micro"
 
